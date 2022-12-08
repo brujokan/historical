@@ -1,4 +1,4 @@
-package com.soma.bookstore.historical.infrastructure.messaging.product.mapper
+package com.soma.bookstore.historical.infrastructure.messaging.product.create.mapper
 
 import com.soma.bookstore.historical.domain.mapper.Mapper
 import com.soma.bookstore.historical.domain.model.Product
