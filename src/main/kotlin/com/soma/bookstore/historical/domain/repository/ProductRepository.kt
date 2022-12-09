@@ -7,4 +7,6 @@ interface ProductRepository {
     fun save(product: Product)
 
     fun delete(id: String)
+
+    fun findById(id: String): Product?
 }
