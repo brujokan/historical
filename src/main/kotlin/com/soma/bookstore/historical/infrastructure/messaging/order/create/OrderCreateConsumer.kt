@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.soma.bookstore.historical.application.use_case.order.create.OrderCreateUseCase
 import com.soma.bookstore.historical.domain.mapper.Mapper
 import com.soma.bookstore.historical.domain.model.Order
+import com.soma.bookstore.historical.exception.MessagingObjectNotFoundException
 import com.soma.bookstore.historical.infrastructure.messaging.order.model.OrderMessage
 import mu.KotlinLogging
 import org.springframework.kafka.annotation.KafkaListener
@@ -26,8 +27,8 @@ class OrderCreateConsumer(
             orderCreateUseCase.create(
                 orderMessageMapper.map(messageObject)
             )
-        } catch (ex: Exception) {
-            logger.error { "Error saving order ${messageObject.id}" }
+        } catch (ex: MessagingObjectNotFoundException) {
+            logger.error { "Error saving order ${messageObject.id}: ${ex.message}" }
         }
     }
 }

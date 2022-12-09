@@ -2,6 +2,7 @@ package com.soma.bookstore.historical.application.use_case.product.find
 
 import com.soma.bookstore.historical.domain.model.Product
 import com.soma.bookstore.historical.domain.repository.ProductRepository
+import com.soma.bookstore.historical.exception.MessagingObjectNotFoundException
 import com.soma.bookstore.historical.exception.NotFoundException
 import org.springframework.stereotype.Service
 
@@ -11,6 +12,6 @@ class ProductFindUseCase(
 ) {
 
     fun find(id: String): Product {
-        return repository.findById(id) ?: throw NotFoundException("Product with id $id not found")
+        return repository.findById(id) ?: throw MessagingObjectNotFoundException("Product with id $id not found")
     }
 }
